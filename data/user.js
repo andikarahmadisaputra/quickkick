@@ -1,0 +1,42 @@
+export const user = [
+  {
+    id: 1,
+    nama: "Admin Futsal",
+    username: "admin",
+    password: "password",
+    level: "admin",
+    telp: "082435672656",
+  },
+  {
+    id: 2,
+    nama: "Budi Santoso",
+    username: "budi123",
+    password: "password",
+    level: "user",
+    telp: "081328333565",
+  },
+  {
+    id: 3,
+    nama: "Siti Rahma",
+    username: "siti.rahma",
+    password: "password",
+    level: "user",
+    telp: "085324652896",
+  },
+  {
+    id: 4,
+    nama: "Rudi Hartono",
+    username: "rudi_hartono",
+    password: "password",
+    level: "user",
+    telp: "082287683312",
+  },
+  {
+    id: 5,
+    nama: "Dewi Kartika",
+    username: "dewi_kartika",
+    password: "password",
+    level: "user",
+    telp: "085324231477",
+  },
+];
