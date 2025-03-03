@@ -1,18 +1,18 @@
-export const user = [
+export const users = [
   {
     id: 1,
     nama: "Admin Futsal",
     username: "admin",
     password: "password",
-    level: "admin",
+    role: "admin",
     telp: "082435672656",
   },
   {
     id: 2,
-    nama: "Budi Santoso",
-    username: "budi123",
+    nama: "Member Futsal",
+    username: "member",
     password: "password",
-    level: "user",
+    role: "member",
     telp: "081328333565",
   },
   {
@@ -20,7 +20,7 @@ export const user = [
     nama: "Siti Rahma",
     username: "siti.rahma",
     password: "password",
-    level: "user",
+    role: "member",
     telp: "085324652896",
   },
   {
@@ -28,7 +28,7 @@ export const user = [
     nama: "Rudi Hartono",
     username: "rudi_hartono",
     password: "password",
-    level: "user",
+    role: "member",
     telp: "082287683312",
   },
   {
@@ -36,7 +36,7 @@ export const user = [
     nama: "Dewi Kartika",
     username: "dewi_kartika",
     password: "password",
-    level: "user",
+    role: "member",
     telp: "085324231477",
   },
 ];
