@@ -1,9 +1,9 @@
-import { user } from "./user.js";
+import { users } from "./users.js";
 import { lapangan } from "./lapangan.js";
 
 function generateBookings(month, year, totalBookings) {
   const result = [];
-  const users = user.filter(u => u.id !== 1); // Jangan gunakan user dengan id 1
+  const userFiltered = users.filter(u => u.role !== "admin"); // Jangan gunakan user dengan role admin
   const bookedTimes = new Map(); // Menyimpan jadwal yang sudah dipakai
   const statusOptions = ["Dibatalkan", "Menunggu Konfirmasi", "Dikonfirmasi"];
 
@@ -30,7 +30,7 @@ function generateBookings(month, year, totalBookings) {
   }
 
   for (let i = 1; i <= totalBookings; i++) {
-    const pemesan = users[Math.floor(Math.random() * users.length)];
+    const pemesan = userFiltered[Math.floor(Math.random() * userFiltered.length)];
     const lapanganData = lapangan[Math.floor(Math.random() * lapangan.length)];
     let tanggal, jam, status;
 
