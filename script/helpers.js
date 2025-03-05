@@ -1,5 +1,10 @@
-import { users } from "../data/users.js";
-import { navigateTo } from "../app.js";
+function isAuthenticated() {
+    return localStorage.getItem("authToken") !== null || sessionStorage.getItem("authToken") !== null;
+}
+
+function getUserRole() {
+    return localStorage.getItem("userRole") || sessionStorage.getItem("userRole");
+}
 
 function login(username, password, rememberMe) {
     const user = users.find(u => u.username === username && u.password === password);
@@ -19,16 +24,22 @@ function login(username, password, rememberMe) {
             localStorage.removeItem("authToken");
             localStorage.removeItem("userRole");
         }
-
-        // Redirect berdasarkan role
+            
         if (user.role === "admin") {
-            navigateTo("/admin");
+            window.location.href = "/admin/admin.html";
         } else {
-            navigateTo("/member");
+            window.location.href = "/member/member.html";
         }
     } else {
         alert("Login gagal! Username atau password salah.");
     }
 }
 
-export { login };
+function logout() {
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("userRole");
+    sessionStorage.removeItem("authToken");
+    sessionStorage.removeItem("userRole");
+
+    window.location.href = "index.html";
+}
