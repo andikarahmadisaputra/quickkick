@@ -1,7 +1,7 @@
-export function Dashboard() {
+document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
         let elements = document.querySelectorAll(".fade-in");
-
+    
         function checkScroll() {
             let windowHeight = window.innerHeight;
             elements.forEach(el => {
@@ -11,62 +11,51 @@ export function Dashboard() {
                 }
             });
         }
-
+    
         window.addEventListener("scroll", checkScroll);
         checkScroll();
     }, 0);
 
-    return `
-        <section class="banner">
-            <div class="banner-overlay"></div>
-            <div class="container banner-content">
-                <h1 class="display-4 fw-bold">Selamat Datang di QuickKick</h1>
-                <p class="lead">Pesan lapangan futsal dengan mudah dan cepat melalui aplikasi kami.</p>
-                <a href="#" class="btn btn-primary btn-lg">Booking Sekarang</a>
-            </div>
-        </section>
+  // Section Banner
+  const banner = `<div class="banner-overlay"></div>
+                    <div class="container banner-content">
+                        <h1 class="display-4 fw-bold">Selamat Datang di QuickKick</h1>
+                        <p class="lead">Pesan lapangan futsal dengan mudah dan cepat melalui aplikasi kami.</p>
+                        <a href="#" class="btn btn-primary btn-lg">Booking Sekarang</a>
+                    </div>`;
+  document.getElementById("banner").innerHTML = banner;
 
-        <section id="lapangan" class="container my-5">
-            <h2 class="text-center mb-4">Lapangan Populer</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Lapangan Sintetis A</h5>
-                            <p class="card-text">Jenis: Rumput Sintetis</p>
-                            <p class="card-text">Harga mulai dari: Rp100.000</p>
-                            <p class="card-text">Fasilitas: Lampu LED, Bench Pemain, Toilet, Kantin</p>
-                            <a href="#" class="btn btn-primary">Lihat Detail</a>
-                        </div>
+  // Section Lapangan
+  const lapangan = `
+    <h2 class="text-center mb-4">Lapangan Populer</h2>
+    <div class="row">
+        ${data_lapangan
+          .map(
+            (detailLapangan) => `
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${detailLapangan.nama}</h5>
+                        <p class="card-text">Jenis: ${detailLapangan.jenis}</p>
+                        <p class="card-text">Harga mulai dari: Rp${
+                          detailLapangan.harga.reguler
+                        }</p>
+                        <p class="card-text">Fasilitas: ${detailLapangan.fasilitas.join(
+                          ", "
+                        )}</p>
+                        <a href="#" class="btn btn-primary">Lihat Detail</a>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Lapangan Vinyl B</h5>
-                            <p class="card-text">Jenis: Vinyl</p>
-                            <p class="card-text">Harga mulai dari: Rp90.000</p>
-                            <p class="card-text">Fasilitas: AC, Lampu LED, Bench Pemain, Toilet</p>
-                            <a href="#" class="btn btn-primary">Lihat Detail</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Lapangan Parquet C</h5>
-                            <p class="card-text">Jenis: Parquet</p>
-                            <p class="card-text">Harga mulai dari: Rp100.000</p>
-                            <p class="card-text">Fasilitas: Lampu LED, Bench Pemain, Toilet, Kantin</p>
-                            <a href="#" class="btn btn-primary">Lihat Detail</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </div>`
+          )
+          .join("")}
+    </div>
+`;
 
-        <section id="promo" class="container my-5">
-            <h2 class="text-center mb-4">Promo & Diskon</h2>
+  document.getElementById("lapangan").innerHTML = lapangan;
+
+  // Section Promo
+  const promo = `<h2 class="text-center mb-4">Promo & Diskon</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card text-center">
@@ -92,21 +81,21 @@ export function Dashboard() {
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </div>`;
+  document.getElementById("promo").innerHTML = promo;
 
-        <section class="container my-5 fade-in">
-            <h2 class="text-center mb-4">Cara Booking</h2>
+  // Section Cara Booking
+  const caraBooking = `<h2 class="text-center mb-4">Cara Booking</h2>
             <ol class="list-group list-group-numbered">
                 <li class="list-group-item">Pilih lapangan</li>
                 <li class="list-group-item">Pilih jadwal</li>
                 <li class="list-group-item">Bayar</li>
                 <li class="list-group-item">Main</li>
-            </ol>
-        </section>
+            </ol>`;
+  document.getElementById("caraBooking").innerHTML = caraBooking;
 
-        <section id="testimoni" class="container my-5 fade-in">
-            <h2 class="text-center mb-4">Testimoni Pengguna</h2>
+  // Section Testimoni
+  const testimoni = `<h2 class="text-center mb-4">Testimoni Pengguna</h2>
             <div class="card">
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
@@ -114,11 +103,11 @@ export function Dashboard() {
                         <footer class="blockquote-footer">Rizky, Jakarta</footer>
                     </blockquote>
                 </div>
-            </div>
-        </section>
+            </div>`;
+  document.getElementById("testimoni").innerHTML = testimoni;
 
-        <section id="faq" class="container my-5">
-            <h2 class="text-center mb-4">FAQ (Pertanyaan Umum)</h2>
+  // Section FAQ
+  const faq = `<h2 class="text-center mb-4">FAQ (Pertanyaan Umum)</h2>
             <div class="accordion" id="faqAccordion">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
@@ -132,15 +121,14 @@ export function Dashboard() {
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </div>`;
+  document.getElementById("faq").innerHTML = faq;
 
-        <footer class="bg-dark text-white text-center py-4">
-            <div class="container">
+  // Footer
+  const footer = `<div class="container">
                 <p>Kontak: <a href="mailto:info@quickkick.com" class="text-white">info@quickkick.com</a> | WhatsApp: 08123456789</p>
                 <p>Ikuti kami: <a href="#" class="text-white">Instagram</a> | <a href="#" class="text-white">Facebook</a> | <a href="#" class="text-white">Twitter</a></p>
                 <p><a href="#" class="text-white">Kebijakan Privasi</a> | <a href="#" class="text-white">Syarat & Ketentuan</a></p>
-            </div>
-        </footer>
-    `;
-}
+            </div>`;
+  document.getElementById("footer").innerHTML = footer;
+});
