@@ -3,9 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Member - QuickKick</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Abu-abu muda untuk latar belakang */
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff; /* Putih untuk konten utama */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333333;
+            text-align: center;
+        }
+        .section {
+            margin-top: 20px;
+        }
+        .section h2 {
+            color: #555555;
+            font-size: 1.2em;
+        }
+        select, input[type="date"], button {
+            padding: 10px;
+            margin: 5px 0;
+            width: 100%;
+            max-width: 300px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #808080; /* Abu-abu untuk tombol */
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #666666;
+        }
+        #fieldList {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f5f5f5; /* Abu-abu sangat muda */
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Selamat Datang, Member QuickKick!</h1>
+
+        <!-- Bagian Pemesanan Online -->
+        <div class="section">
+            <h2>Pemesanan Online</h2>
+            <label for="field">Pilih Lapangan:</label>
+            <select id="field" name="field">
+                <option value="">-- Pilih Lapangan --</option>
+                <option value="Lapangan 1">Lapangan 1</option>
+                <option value="Lapangan 2">Lapangan 2</option>
+                <option value="Lapangan 3">Lapangan 3</option>
+            </select>
+
+            <label for="date">Pilih Tanggal:</label>
+            <input type="date" id="date" name="date">
+
+            <button onclick="bookField()">Pesan Sekarang</button>
+        </div>
+
+        <!-- Bagian Daftar Lapangan -->
+        <div class="section">
+            <h2>Daftar Lapangan</h2>
+            <div id="fieldList">
+                <p>Lapangan 1 - Tersedia</p>
+                <p>Lapangan 2 - Tersedia</p>
+                <p>Lapangan 3 - Dipesan</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menghubungkan file member.js -->
+    <script src="member.js"></script>
 </body>
 </html>
