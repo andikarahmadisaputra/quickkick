@@ -1,3 +1,55 @@
+function getBookingsByLapanganAndMonth(
+  dataBooking,
+  dataUser,
+  lapanganId,
+  year,
+  month
+) {
+  // Booking yang memiliki status yang diizinkan
+  const allowedStatus = ["Menunggu Konfirmasi", "Dikonfirmasi"];
+
+  // Filter booking berdasarkan lapangan_id, tahun, bulan, dan status
+  const filteredBookings = dataBooking.filter((booking) => {
+    const bookingDate = new Date(booking.tanggal);
+    return (
+      booking.lapangan_id === lapanganId &&
+      bookingDate.getFullYear() === year &&
+      bookingDate.getMonth() + 1 === month && // getMonth() mulai dari 0 (Januari)
+      allowedStatus.includes(booking.status)
+    );
+  });
+
+  // Ambil jumlah hari dalam bulan yang dipilih
+  const daysInMonth = new Date(year, month, 0).getDate();
+
+  // Inisialisasi struktur data hasil
+  let schedule = {};
+  for (let day = 1; day <= daysInMonth; day++) {
+    let dateKey = `${year}-${String(month).padStart(2, "0")}-${String(
+      day
+    ).padStart(2, "0")}`;
+    schedule[dateKey] = {};
+    for (let hour = 8; hour <= 22; hour++) {
+      schedule[dateKey][`${hour}:00`] = ""; // Default kosong
+    }
+  }
+
+  // Isi data booking
+  filteredBookings.forEach((booking) => {
+    const pemesan = dataUser.find((user) => user.id === booking.pemesan_id);
+    const pemesanNama = pemesan ? pemesan.nama : "Tidak Diketahui";
+
+    if (
+      schedule[booking.tanggal] &&
+      schedule[booking.tanggal][booking.jam] !== undefined
+    ) {
+      schedule[booking.tanggal][booking.jam] = pemesanNama;
+    }
+  });
+
+  return schedule;
+}
+
 const data_users = [
   {
     id: 1,

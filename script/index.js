@@ -1,35 +1,46 @@
+// Animasi Halaman HTML
 document.addEventListener("DOMContentLoaded", function () {
-    setTimeout(() => {
-        let elements = document.querySelectorAll(".fade-in");
-    
-        function checkScroll() {
-            let windowHeight = window.innerHeight;
-            elements.forEach(el => {
-                let position = el.getBoundingClientRect().top;
-                if (position < windowHeight - 50) {
-                    el.classList.add("visible");
-                }
-            });
+  setTimeout(() => {
+    let elements = document.querySelectorAll(".fade-in");
+
+    function checkScroll() {
+      let windowHeight = window.innerHeight;
+      elements.forEach((el) => {
+        let position = el.getBoundingClientRect().top;
+        if (position < windowHeight - 50) {
+          el.classList.add("visible");
         }
-    
-        window.addEventListener("scroll", checkScroll);
-        checkScroll();
-    }, 0);
+      });
+    }
+
+    window.addEventListener("scroll", checkScroll);
+    checkScroll();
+  }, 0);
+
+  // Periksa apakah localStorage sudah memiliki 'lapangan_storage'
+  if (!localStorage.getItem("lapangan_storage")) {
+    // masukkan data dummy ke localStorage
+    localStorage.setItem("lapangan_storage", JSON.stringify(data_lapangan));
+  }
+  // buat variabel untuk menampung data di yang sudah dimasukkan ke localStorage
+  let lapanganStorage = JSON.parse(localStorage.getItem("lapangan_storage"));
 
   // Section Banner
-  const banner = `<div class="banner-overlay"></div>
+  const banner = `
+  <div class="banner-overlay"></div>
                     <div class="container banner-content">
                         <h1 class="display-4 fw-bold">Selamat Datang di QuickKick</h1>
                         <p class="lead">Pesan lapangan futsal dengan mudah dan cepat melalui aplikasi kami.</p>
                         <a href="#" class="btn btn-primary btn-lg">Booking Sekarang</a>
-                    </div>`;
+                    </div>
+`;
   document.getElementById("banner").innerHTML = banner;
 
   // Section Lapangan
   const lapangan = `
     <h2 class="text-center mb-4">Lapangan Populer</h2>
     <div class="row">
-        ${data_lapangan
+        ${lapanganStorage
           .map(
             (detailLapangan) => `
             <div class="col-md-4">
@@ -37,9 +48,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="card-body">
                         <h5 class="card-title">${detailLapangan.nama}</h5>
                         <p class="card-text">Jenis: ${detailLapangan.jenis}</p>
-                        <p class="card-text">Harga mulai dari: Rp${
-                          detailLapangan.harga.reguler
-                        }</p>
+                        <p class="card-text">Harga mulai dari: Rp ${detailLapangan.harga.reguler.toLocaleString(
+                          "id-ID"
+                        )}</p>
                         <p class="card-text">Fasilitas: ${detailLapangan.fasilitas.join(
                           ", "
                         )}</p>
@@ -49,8 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>`
           )
           .join("")}
-    </div>
-`;
+    </div>`;
 
   document.getElementById("lapangan").innerHTML = lapangan;
 
@@ -123,12 +133,4 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             </div>`;
   document.getElementById("faq").innerHTML = faq;
-
-  // Footer
-  const footer = `<div class="container">
-                <p>Kontak: <a href="mailto:info@quickkick.com" class="text-white">info@quickkick.com</a> | WhatsApp: 08123456789</p>
-                <p>Ikuti kami: <a href="#" class="text-white">Instagram</a> | <a href="#" class="text-white">Facebook</a> | <a href="#" class="text-white">Twitter</a></p>
-                <p><a href="#" class="text-white">Kebijakan Privasi</a> | <a href="#" class="text-white">Syarat & Ketentuan</a></p>
-            </div>`;
-  document.getElementById("footer").innerHTML = footer;
 });
