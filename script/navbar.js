@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
     <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
         <li class="nav-item"><a class="nav-link" href="lapangan.html">Cek Jadwal</a></li>
-        <li class="nav-item"><a class="nav-link" href="#promo">Promo</a></li>
-        <li class="nav-item"><a class="nav-link" href="#testimoni">Testimoni</a></li>
-        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#promo">Promo</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#testimoni">Testimoni</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#faq">FAQ</a></li>
         <li class="nav-item"><a class="nav-link btn btn-primary text-white px-3" href="auth/login.html">Booking</a></li>
     </ul>
 
