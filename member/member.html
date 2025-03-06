@@ -3,91 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Member - QuickKick</title>
+    <title>Member Dashboard - QuickKick</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome untuk ikon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0; /* Abu-abu muda untuk latar belakang */
-            margin: 0;
-            padding: 20px;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+            min-height: 100vh;
+            padding-top: 70px;
         }
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #ffffff; /* Putih untuk konten utama */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 1100px;
+            margin: 40px auto;
         }
-        h1 {
-            color: #333333;
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        .card-header {
+            background-color: #28a745;
+            color: white;
+            border-radius: 15px 15px 0 0;
+            padding: 20px;
             text-align: center;
         }
-        .section {
-            margin-top: 20px;
+        .card-body {
+            padding: 30px;
         }
-        .section h2 {
-            color: #555555;
-            font-size: 1.2em;
+        h1, h2 {
+            font-weight: 600;
+            color: #28a745;
         }
-        select, input[type="date"], button {
-            padding: 10px;
-            margin: 5px 0;
+        label {
+            font-weight: 500;
+            color: #444;
+        }
+        select, input[type="date"] {
             width: 100%;
-            max-width: 300px;
-            border: 1px solid #cccccc;
-            border-radius: 5px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
         }
-        button {
-            background-color: #808080; /* Abu-abu untuk tombol */
-            color: #ffffff;
+        select:focus, input:focus {
+            border-color: #28a745;
+            outline: none;
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
+        }
+        .btn-primary {
+            background-color: #28a745;
             border: none;
-            cursor: pointer;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
-        button:hover {
-            background-color: #666666;
+        .btn-primary:hover {
+            background-color: #218838;
+            transform: scale(1.05);
         }
-        #fieldList {
-            margin-top: 10px;
+        #fieldList p {
             padding: 10px;
-            background-color: #f5f5f5; /* Abu-abu sangat muda */
+            background: #f8f9fa;
             border-radius: 5px;
+            margin: 5px 0;
+            transition: background-color 0.3s ease;
+        }
+        #fieldList p.available { color: #28a745; }
+        #fieldList p.booked { color: #dc3545; }
+        #fieldList p:hover { background: #e9ecef; }
+        @media (max-width: 768px) {
+            .container { margin: 20px; }
+            .card-body { padding: 20px; }
         }
     </style>
 </head>
 <body>
+    <!-- Navbar dari navbar.js -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top"></nav>
+
     <div class="container">
-        <h1>Selamat Datang, Member QuickKick!</h1>
+        <div class="row g-4">
+            <!-- Pemesanan Online -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-calendar-check me-2"></i>Pemesanan Online</h2>
+                    </div>
+                    <div class="card-body">
+                        <label for="field">Pilih Lapangan:</label>
+                        <select id="field" name="field" class="form-select mb-3">
+                            <option value="">-- Pilih Lapangan --</option>
+                            <option value="Lapangan 1">Lapangan 1</option>
+                            <option value="Lapangan 2">Lapangan 2</option>
+                            <option value="Lapangan 3">Lapangan 3</option>
+                        </select>
 
-        <!-- Bagian Pemesanan Online -->
-        <div class="section">
-            <h2>Pemesanan Online</h2>
-            <label for="field">Pilih Lapangan:</label>
-            <select id="field" name="field">
-                <option value="">-- Pilih Lapangan --</option>
-                <option value="Lapangan 1">Lapangan 1</option>
-                <option value="Lapangan 2">Lapangan 2</option>
-                <option value="Lapangan 3">Lapangan 3</option>
-            </select>
+                        <label for="date">Pilih Tanggal:</label>
+                        <input type="date" id="date" name="date" class="form-control mb-3" min="2025-03-06">
 
-            <label for="date">Pilih Tanggal:</label>
-            <input type="date" id="date" name="date">
+                        <button onclick="bookField()" class="btn btn-primary w-100">
+                            <i class="fas fa-arrow-right me-2"></i>Pesan Sekarang
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-            <button onclick="bookField()">Pesan Sekarang</button>
-        </div>
-
-        <!-- Bagian Daftar Lapangan -->
-        <div class="section">
-            <h2>Daftar Lapangan</h2>
-            <div id="fieldList">
-                <p>Lapangan 1 - Tersedia</p>
-                <p>Lapangan 2 - Tersedia</p>
-                <p>Lapangan 3 - Dipesan</p>
+            <!-- Daftar Lapangan -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-list me-2"></i>Daftar Lapangan</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="fieldList">
+                            <p class="available">Lapangan 1 - Tersedia</p>
+                            <p class="available">Lapangan 2 - Tersedia</p>
+                            <p class="booked">Lapangan 3 - Dipesan</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Menghubungkan file member.js -->
+    <!-- Footer dari navbar.js -->
+    <footer id="footer" class="bg-dark text-white text-center py-4"></footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script -->
     <script src="member.js"></script>
+    <script src="navbar.js"></script>
+    <!-- Font Google untuk Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </body>
 </html>
