@@ -19,7 +19,7 @@ function generateBookings(month, year, totalBookings) {
     const dayOfWeek = new Date(tanggal).getDay(); // 0 = Minggu, 6 = Sabtu
     const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
     let price = isWeekend ? lapanganData.harga.weekend : lapanganData.harga.reguler;
-    
+
     // Gunakan harga promo jika tersedia
     if (isWeekend && lapanganData.harga.promo.weekend > 0) {
       price = lapanganData.harga.promo.weekend;
