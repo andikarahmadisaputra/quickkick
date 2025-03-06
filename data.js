@@ -1,3 +1,23 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // Periksa apakah localStorage sudah memiliki 'lapangan_storage'
+  if (!localStorage.getItem("lapangan_storage")) {
+    // masukkan data dummy ke localStorage
+    localStorage.setItem("lapangan_storage", JSON.stringify(data_lapangan));
+  }
+  // buat variabel untuk menampung data di yang sudah dimasukkan ke localStorage
+  let lapanganStorage = JSON.parse(localStorage.getItem("lapangan_storage"));
+
+  if (!localStorage.getItem("booking_storage")) {
+    localStorage.setItem("booking_storage", JSON.stringify(data_booking));
+  }
+  let bookingStorage = JSON.parse(localStorage.getItem("booking_storage"));
+
+  if (!localStorage.getItem("user_storage")) {
+    localStorage.setItem("user_storage", JSON.stringify(data_users));
+  }
+  let userStorage = JSON.parse(localStorage.getItem("user_storage"));
+});
+
 function getBookingsByLapanganAndMonth(
   dataBooking,
   dataUser,
