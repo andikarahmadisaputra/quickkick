@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <li class="nav-item"><a class="nav-link" href="#promo">Promo</a></li>
         <li class="nav-item"><a class="nav-link" href="#testimoni">Testimoni</a></li>
         <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
-        <li class="nav-item"><a class="nav-link btn btn-primary text-white px-3" href="auth/login.html">Booking</a></li>
+        <li class="nav-item"><a class="nav-link btn btn-primary text-white px-3" href="/auth/login.html">Booking</a></li>
     </ul>
 
     <ul class="navbar-nav ms-3">
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         ${auth
             ? `<li class="nav-item ms-2"><a class="nav-link btn btn-danger text-white px-3" onclick="logout()">Logout</a></li>`
-            : `<li class="nav-item"><a class="nav-link btn btn-primary px-3" href="/auth/login.html ">Login</a></li>`
+            : `<li class="nav-item"><a class="nav-link btn btn-primary px-3" href="/auth/login.html">Login</a></li>`
         }
     </ul>
 </div>
