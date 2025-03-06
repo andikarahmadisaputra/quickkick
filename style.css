@@ -1,15 +1,16 @@
 /* Navbar Mengambang */
 .navbar {
     transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    background: rgba(0, 0, 0, 0.5); /* Transparan saat awal */
+    background: rgba(0, 0, 0, 0.5);
+    /* Transparan saat awal */
 }
 
 /* Navbar berubah warna saat di-scroll */
 .navbar.scrolled {
-    background: rgba(0, 0, 0, 0.9); /* Warna lebih gelap */
+    background: rgba(0, 0, 0, 0.9);
+    /* Warna lebih gelap */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-
 
 /* Animasi untuk Banner */
 .banner {
@@ -27,8 +28,15 @@
 }
 
 @keyframes fadeInScale {
-    0% { opacity: 0; transform: scale(0.95); }
-    100% { opacity: 1; transform: scale(1); }
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .banner-overlay {
@@ -49,6 +57,7 @@
 .card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -60,8 +69,13 @@
 }
 
 @keyframes bounce {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-5px); }
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-5px);
+    }
 }
 
 /* Fade-in saat di-scroll */
@@ -70,11 +84,11 @@
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
+
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
 }
-
 
 /* Login */
 .login-container {
@@ -108,4 +122,48 @@
 
 .login-footer a {
     text-decoration: none;
+}
+
+video-background {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    /* Ubah tinggi banner */
+    overflow: hidden;
+}
+
+#bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    /* Pastikan video di belakang konten lain */
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding-top: 15%;
+    /* sesuaikan padding agar content ada di tengah */
+}
+
+#lapangan {
+    padding-top: 30px;
+    /* Tambahkan padding di bagian atas section lapangan */
 }
