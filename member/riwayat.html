@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat & Status Booking - QuickKick</title>
+    <!-- Bootstrap CSS untuk navbar -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #e8ecef; /* Abu-abu muda untuk latar belakang */
+            color: #333;
+            line-height: 1.6;
+            padding-top: 80px; /* Ruang untuk navbar fixed-top */
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #ffffff; /* Putih untuk konten utama */
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        h1 {
+            color: #28a745; /* Hijau untuk judul */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .filter {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        select, button {
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            font-size: 1em;
+        }
+        button {
+            background-color: #28a745; /* Hijau untuk tombol */
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #218838; /* Hijau lebih gelap saat hover */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e8ecef;
+        }
+        th {
+            background-color: #28a745; /* Hijau untuk header tabel */
+            color: #ffffff;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa; /* Abu-abu sangat muda untuk baris genap */
+        }
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+            }
+            .filter {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Placeholder untuk navbar -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top"></nav>
+
+    <!-- Konten Utama -->
+    <div class="container">
+        <h1>Riwayat & Status Booking</h1>
+        
+        <!-- Filter Bulan dan Tahun -->
+        <div class="filter">
+            <select id="bulan" name="bulan">
+                <option value="">-- Pilih Bulan --</option>
+                <!-- Option akan diisi via navbar.js -->
+            </select>
+            <select id="tahun" name="tahun">
+                <option value="">-- Pilih Tahun --</option>
+                <!-- Option akan diisi via navbar.js -->
+            </select>
+            <button id="proses">Proses</button>
+        </div>
+
+        <!-- Tabel Riwayat -->
+        <table id="tabelRiwayat">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Lapangan</th>
+                    <th>Tanggal</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data contoh -->
+                <tr>
+                    <td>1</td>
+                    <td>Lapangan 1</td>
+                    <td>2025-03-06</td>
+                    <td>Selesai</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Lapangan 2</td>
+                    <td>2025-03-07</td>
+                    <td>Menunggu</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Placeholder untuk footer -->
+    <footer id="footer" class="bg-dark text-white text-center py-4"></footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Hubungkan navbar.js -->
+    <script src="navbar.js"></script>
+</body>
+</html>
