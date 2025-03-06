@@ -44,7 +44,7 @@ function login(username, password, rememberMe) {
         if (user.role === "admin") {
             window.location.href = "../admin/admin.html";
         } else {
-            window.location.href = "../member/member.html";
+            window.location.href = "/member/index.html";
         }
     } else {
       alert("Login gagal! Username atau password salah.");

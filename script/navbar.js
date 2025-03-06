@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
             : ""
         }
         ${auth && role === "member"
-            ? `<li class="nav-item"><a class="nav-link btn btn-outline-light px-3" href="member/member.html">Member</a></li>`
+            ? `<li class="nav-item"><a class="nav-link btn btn-outline-light px-3" href="member/index.html">Member</a></li>`
             : ""
         }
         ${auth
