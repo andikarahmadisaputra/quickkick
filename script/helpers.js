@@ -32,9 +32,9 @@ function login(username, password, rememberMe) {
         }
 
         if (user.role === "admin") {
-            window.location.href = "/admin/admin.html";
+            window.location.href = "admin/admin.html";
         } else {
-            window.location.href = "/member/member.html";
+            window.location.href = "member/member.html";
         }
     } else {
         alert("Login gagal! Username atau password salah.");
@@ -61,7 +61,7 @@ function logout() {
     localStorage.removeItem("userRole");
     sessionStorage.removeItem("authToken");
     sessionStorage.removeItem("userRole");
-    window.location.href = "/login.html";
+    window.location.href = "auth/login.html";
 }
 
 document.getElementById("register-confirm-password").addEventListener("input", function () {
@@ -104,5 +104,5 @@ document.getElementById("register-btn").addEventListener("click", function () {
     localStorage.setItem("users_storage", JSON.stringify(users));
 
     alert("Registrasi berhasil! Silakan login.");
-    window.location.href = "/auth/login.html";
+    window.location.href = "auth/login.html";
 });
