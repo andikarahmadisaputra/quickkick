@@ -35,6 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.removeItem("userRole");
         sessionStorage.removeItem("authToken");
         sessionStorage.removeItem("userRole");
-        window.location.href = "../index.html";
+        window.location.href = "index.html";
     }
 });
