@@ -57,6 +57,13 @@ function handleLogin(event) {
     const password = document.getElementById("password").value;
     const rememberMe = document.getElementById("remember").checked;
 
-    login(username, password, rememberMe);
+  login(username, password, rememberMe);
 }
-
+// Fungsi logout
+function logout() {
+  localStorage.removeItem("authToken");
+  localStorage.removeItem("userRole");
+  sessionStorage.removeItem("authToken");
+  sessionStorage.removeItem("userRole");
+  window.location.href = "auth/login.html";
+}
