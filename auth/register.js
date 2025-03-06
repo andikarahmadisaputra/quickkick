@@ -38,5 +38,5 @@ document.getElementById("register-btn").addEventListener("click", function () {
     localStorage.setItem("users_storage", JSON.stringify(users));
 
     alert("Registrasi berhasil! Silakan login.");
-    window.location.href = "/auth/login.html";
+    window.location.href = "login.html";
 });
