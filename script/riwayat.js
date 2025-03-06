@@ -49,10 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
       selectTahun.appendChild(option);
     }
   
-    function generateTable() {
-        const table = document.getElementById("bookingTable");
-
-        // Buat thead
+    function generateTable(table, data) {
         table.innerHTML = `
             <thead class="table-dark">
                 <tr>
@@ -71,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let tbody = table.createTBody();
         const today = new Date();
 
-        bookings.forEach((booking) => {
+        data.forEach((booking) => {
             const bookingDate = new Date(booking.tanggal);
             const timeDiff = (bookingDate - today) / (1000 * 60 * 60 * 24); // Selisih hari
 
@@ -102,19 +99,19 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // Menambah event ketika btn proses diklik
     document.getElementById("proses").addEventListener("click", function () {
-      const bookingTable = document.getElementById("bookingTable");
-      const filterLapangan = document.getElementById("lapangan").value;
+      const tabelRiwayat = document.getElementById("tabelRiwayat");
       const filterTahun = document.getElementById("tahun").value;
       const filterBulan = document.getElementById("bulan").value;
-      const jadwalBooking = getBookingsByLapanganAndMonth(
+
+      const riwayatBooking = getRiwayatBookingByUserId(
         bookingStorage,
-        userStorage,
-        Number(filterLapangan),
+        lapanganStorage,
+        getUserLogin().id,
         Number(filterTahun),
         Number(filterBulan)
-      );
+      )
   
-      generateTable(bookingTable, jadwalBooking);
+      generateTable(tabelRiwayat, riwayatBooking);
     });
   });
   

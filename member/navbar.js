@@ -8,13 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="member/member.html">Booking</a></li>
-                    <li class="nav-item"><a class="nav-link" href="member/cek-lapangan.html">Cek Lapangan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="member/riwayat.html">Riwayat</a></li>
-                    <li class="nav-item"><a class="nav-link" href="member/reschedule.html">Reschedule</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Cek Lapangan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="riwayat.html">Riwayat</a></li>
                 </ul>
                 <ul class="navbar-nav ms-3">
-                    <li class="nav-item"><a class="nav-link btn btn-outline-light px-3" href="member/member.html">Member</a></li>
                     <li class="nav-item ms-2"><a class="nav-link btn btn-danger text-white px-3" onclick="logout()">Logout</a></li>
                 </ul>
             </div>
@@ -32,44 +29,12 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("footer").innerHTML = footerContent;
     document.getElementById("footer").style.backgroundColor = '#218838'; // Hijau lebih gelap untuk footer
 
-    // Inisialisasi elemen filter
-    const bulanSelect = document.getElementById('bulan');
-    const months = [
-        'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-        'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-    ];
-    months.forEach((month, index) => {
-        const option = document.createElement('option');
-        option.value = index + 1;
-        option.text = month;
-        bulanSelect.appendChild(option); // Perbaikan di sini
-    });
-
-    const tahunSelect = document.getElementById('tahun');
-    const currentYear = new Date().getFullYear();
-    for (let year = currentYear - 5; year <= currentYear + 5; year++) {
-        const option = document.createElement('option');
-        option.value = year;
-        option.text = year;
-        tahunSelect.appendChild(option); // Perbaikan di sini
-    }
-
-    // Logika tombol proses
-    document.getElementById('proses').addEventListener('click', () => {
-        const bulan = bulanSelect.value;
-        const tahun = tahunSelect.value;
-        if (bulan && tahun) {
-            alert(`Memproses riwayat untuk Bulan: ${months[bulan - 1]}, Tahun: ${tahun}`);
-            // Tambahkan logika untuk mengambil data dari server di sini
-        } else {
-            alert('Silakan pilih bulan dan tahun terlebih dahulu!');
-        }
-    });
-
-    // Fungsi logout (contoh, sesuaikan dengan logika Anda)
+    // Fungsi logout
     window.logout = function() {
-        // Logika logout, misalnya menghapus token atau redirect
-        alert('Logout berhasil!');
-        window.location.href = 'auth/login.html';
-    };
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("userRole");
+        sessionStorage.removeItem("authToken");
+        sessionStorage.removeItem("userRole");
+        window.location.href = "/index.html";
+    }
 });
