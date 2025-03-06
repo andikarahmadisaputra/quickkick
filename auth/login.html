@@ -27,24 +27,23 @@
                     <input type="checkbox" id="remember" class="me-3">
                     <label for="remember" class="mb-0">Ingatkan saya</label>
                 </div>
-                <button class="btn btn-success w-100" onclick="handleLogin(event)">
+                <button id="login-btn" class="btn btn-success w-100">
                     <i class="fas fa-sign-in-alt"></i> SIGN IN
                 </button>
+                <p class="mt-3">Kembali ke <a href="../index.html" class="text-success fw-bold">beranda</a></p>
             </div>
             <div class="col-md-6 register-section text-center d-flex flex-column justify-content-center">
                 <h2 class="fw-bold">Halo, Teman!</h2>
                 <p>Daftarkan diri anda jika belum punya akun dan mulai booking lapangan kita</p>
-                <a href="auth/register.html" class="btn btn-outline-light">SIGN UP</a>
+                <a href="register.html" class="btn btn-outline-light">SIGN UP</a>
             </div>
         </div>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             document.body.classList.add("fade-in");
-
             const passwordInput = document.getElementById("password");
             const passwordToggle = document.getElementById("password-toggle");
-
             passwordToggle.addEventListener("click", function () {
                 if (passwordInput.type === "password") {
                     passwordInput.type = "text";
@@ -56,6 +55,12 @@
                     passwordToggle.classList.add("fa-eye");
                 }
             });
+            // Tambahkan event listener untuk tombol login
+            const loginBtn = document.getElementById("login-btn");
+            if (loginBtn) {
+                loginBtn.addEventListener("click", handleLogin);
+            }
+
         });
     </script>
 </body>
