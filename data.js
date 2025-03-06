@@ -1,22 +1,61 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Periksa apakah localStorage sudah memiliki 'lapangan_storage'
-  if (!localStorage.getItem("lapangan_storage")) {
-    // masukkan data dummy ke localStorage
-    localStorage.setItem("lapangan_storage", JSON.stringify(data_lapangan));
-  }
-  // buat variabel untuk menampung data di yang sudah dimasukkan ke localStorage
-  let lapanganStorage = JSON.parse(localStorage.getItem("lapangan_storage"));
+if (!localStorage.getItem("lapangan_storage")) {
+  localStorage.setItem("lapangan_storage", JSON.stringify(data_lapangan));
+}
+let lapanganStorage = JSON.parse(localStorage.getItem("lapangan_storage"));
 
-  if (!localStorage.getItem("booking_storage")) {
-    localStorage.setItem("booking_storage", JSON.stringify(data_booking));
-  }
-  let bookingStorage = JSON.parse(localStorage.getItem("booking_storage"));
+if (!localStorage.getItem("booking_storage")) {
+  localStorage.setItem("booking_storage", JSON.stringify(data_booking));
+}
+let bookingStorage = JSON.parse(localStorage.getItem("booking_storage"));
 
-  if (!localStorage.getItem("user_storage")) {
-    localStorage.setItem("user_storage", JSON.stringify(data_users));
-  }
-  let userStorage = JSON.parse(localStorage.getItem("user_storage"));
-});
+if (!localStorage.getItem("user_storage")) {
+  localStorage.setItem("user_storage", JSON.stringify(data_users));
+}
+let userStorage = JSON.parse(localStorage.getItem("user_storage"));
+
+function getUserLogin() {
+  let authToken =
+    localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
+
+  if (!authToken) return null;
+
+  let username = authToken.split("-")[0];
+
+  return userStorage.find((user) => user.username === username) || null;
+}
+
+function getRiwayatBookingByUserId(
+  dataBooking,
+  dataLapangan,
+  userId,
+  year,
+  month
+) {
+  const filteredBookings = dataBooking.filter((booking) => {
+    const bookingDate = new Date(booking.tanggal);
+    return (
+      booking.pemesan_id === userId &&
+      bookingDate.getFullYear() === year &&
+      bookingDate.getMonth() + 1 === month // getMonth() mulai dari 0 (Januari)
+    );
+  });
+
+  let result = [];
+  filteredBookings.forEach((booking) => {
+    const lapangan = dataLapangan.find(
+      (lapangan) => lapangan.id === booking.lapangan_id
+    );
+    const namaLapangan = lapangan ? lapangan.nama : "Tidak Diketahui";
+
+    booking.nama_lapangan = namaLapangan;
+
+    result.push(booking);
+  });
+
+  result.sort((a, b) => new Date(b.tanggal) - new Date(a.tanggal));
+
+  return result || null;
+}
 
 function getBookingsByLapanganAndMonth(
   dataBooking,
